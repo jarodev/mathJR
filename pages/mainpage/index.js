@@ -1,0 +1,28 @@
+import * as React from 'react';
+import { Stickyfooter } from '../../components/footer';
+import { Grid } from '@mui/material';
+import { LinkCard } from '../../components/basiccard';
+
+export default function Mainpage() {
+	return (
+		<>
+			<Grid container spacing={2}>
+				<Grid item xs={12}>
+					<h1>Mathe</h1>
+				</Grid>
+				<Grid item xs={2}></Grid>
+				<Grid item xs={2}>
+					<LinkCard
+						componentMedia="img"
+						componentMediaHeight="150"
+						componentMediaImage="/1x1.png"
+						componentMediaAlt="1x1"
+						contentTitle="1x1 üben"
+						contentText="Wir üben das 1x1"
+					/>
+				</Grid>
+			</Grid>
+			<Stickyfooter />
+		</>
+	);
+}
