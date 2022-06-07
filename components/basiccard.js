@@ -18,7 +18,7 @@ export function LinkCard(props) {
 					alt={props.componentMediaAlt}
 				/>
 				<CardContent>
-					<Typography gutterBottom variant="h3" component="div">
+					<Typography gutterBottom variant="h4" component="div">
 						{props.contentTitle}
 					</Typography>
 					<Typography
