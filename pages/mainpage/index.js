@@ -15,12 +15,13 @@ export default function Mainpage() {
 					<LinkCard
 						componentMedia="img"
 						componentMediaHeight="150"
-						componentMediaImage="/1x1.png"
+						componentMediaImage="/icons/1x1.png"
 						componentMediaAlt="1x1"
 						contentTitle="1x1 üben"
 						contentText="Wir üben das 1x1"
 					/>
 				</Grid>
+				<Grid item xs={12} />
 			</Grid>
 			<Stickyfooter />
 		</>
