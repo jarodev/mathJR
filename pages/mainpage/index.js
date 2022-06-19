@@ -19,6 +19,7 @@ export default function Mainpage() {
 						componentMediaAlt="1x1"
 						contentTitle="1x1 üben"
 						contentText="Wir üben das 1x1"
+						componentLink="apps/aa-1x1"
 					/>
 				</Grid>
 				<Grid item xs={12} />
