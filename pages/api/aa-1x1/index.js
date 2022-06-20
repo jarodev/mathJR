@@ -1,5 +1,12 @@
 import { permutations, scrumbleTuples } from '../../../common/scrumbler';
 
+/**
+ * POST call for 1x1. Body contains json with following attributes:
+ * numberOfTasks: how many tasks should be created
+ * itemsToScrumble: array of objects containing two items
+ * @param req server request
+ * @param res server response contains an array of elements
+ */
 export default function handler(req, res) {
 	if (req.method === 'POST') {
 		try {
@@ -20,10 +27,11 @@ export default function handler(req, res) {
 				const resJSON = {
 					tasks: tasks,
 				};
+
 				res.status(200).send(resJSON);
 			}
 		} catch (error) {
-			res.status(400).send(error);
+			res.status(400).send(JSON.stringify(error));
 		}
 	} else res.status(400).send('Only POST allowed');
 }
