@@ -1,45 +1,32 @@
 import * as React from 'react';
-import axios from 'axios';
 import Typography from '@mui/material/Typography';
+import { permutations, scrumbleTuples } from '../../common/scrumbler';
+import exportToPdf from './exportToPdf';
+import { Button } from '@mui/material';
 
 export default function Tasks(props) {
-	const body = {
-		numberOfTasks: String(props.count),
-		itemsToScrumble: props.summands,
-	};
-	let output;
-	output = getTasks(body);
-	console.log(output);
+	const tuples = permutations(props.summands);
+	const tasks = scrumbleTuples(tuples, props.count);
 
-	output.map((task) => {
-		const returnString = `${task.item1} * ${task.item2} = `;
-		console.log(returnString);
+	if (tasks.length > 0) {
 		return (
-			<Typography variant="body1" key={`${task.item1}_${task.item2}`}>
-				{returnString}
-			</Typography>
+			<div style={{ textAlign: 'center' }}>
+				<Button
+					variant="contained"
+					onClick={() => exportToPdf(tasks)}
+					style={{ marginBlock: '2em' }}
+				>
+					als pdf exportieren
+				</Button>
+				{tasks.map((task) => {
+					const returnString = `${task.item1 + 1} * ${task.item2 + 1} = `;
+					return (
+						<Typography variant="body1" key={`${task.item1}_${task.item2}`}>
+							{returnString}
+						</Typography>
+					);
+				})}
+			</div>
 		);
-	});
-}
-
-function getTasks(body) {
-	const options = {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-
-	const url = 'http://localhost:3000/api/aa-1x1';
-
-	const tasksToReturn = [];
-
-	axios
-		.post(url, body, options)
-		.then((res) => {
-			//return JSON.stringify(res.data);
-			res.data.tasks.map((task) => tasksToReturn.push(task));
-		})
-		.catch((e) => console.log(`error: ${e}`));
-
-	return tasksToReturn;
+	}
 }

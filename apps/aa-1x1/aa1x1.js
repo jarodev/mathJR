@@ -1,5 +1,3 @@
-// noinspection DuplicatedCode
-
 import * as React from 'react';
 import Head from 'next/head';
 import Container from '@mui/material/Container';
@@ -20,7 +18,7 @@ export default function Aa1x1() {
 	}
 
 	const summand1 = [];
-	// const summand2 = [];
+	const summand2 = [];
 
 	for (let i = 0; i < 10; i++) {
 		const item = {
@@ -28,14 +26,14 @@ export default function Aa1x1() {
 			checked: true,
 		};
 		summand1.push(item);
-		// summand2.push(item);
+		summand2.push(item);
 	}
 
 	const [numberTasks, setNumberTasks] = React.useState(0);
 
 	const [checkState, setCheckState] = React.useState({
 		summand1,
-		// summand2,
+		summand2,
 	});
 	const [changed, setChanged] = React.useState(false);
 
@@ -62,8 +60,7 @@ export default function Aa1x1() {
 			<Container maxWidth="md">
 				<FormControl component="summand1">
 					<Typography variant="h6" gutterBottom component="div">
-						Aus welchen Summanden sollen die Aufgaben erstellt
-						werden?
+						Aus welchen Summanden sollen die Aufgaben erstellt werden?
 					</Typography>
 					<FormGroup aria-label="summand1" row>
 						{checkState.summand1.map((item) => {
@@ -72,15 +69,12 @@ export default function Aa1x1() {
 									value={item.number}
 									control={
 										<Checkbox
-											checked={
-												checkState.summand1[item.number]
-													.checked
-											}
+											checked={checkState.summand1[item.number].checked}
 											onChange={(e) => {
 												let temp = checkState;
-												temp.summand1[
-													item.number
-												].checked = e.target.checked;
+												// console.log(e.target.checked)
+												temp.summand1[item.number].checked = e.target.checked;
+												// console.log(`temp: ${temp.summand1[item.number].checked}`)
 												setCheckState(temp);
 												setChanged(!changed);
 											}}
@@ -118,10 +112,7 @@ export default function Aa1x1() {
 
 			<Container maxWidth="xs">
 				<div style={{ textAlign: 'center', marginTop: '2em' }}>
-					<Button
-						variant="contained"
-						onClick={() => setChanged(!changed)}
-					>
+					<Button variant="contained" onClick={() => setChanged(!changed)}>
 						Neue Aufgaben
 					</Button>
 				</div>
