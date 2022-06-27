@@ -21,6 +21,15 @@ export default function Mainpage() {
 						contentText="Wir üben das 1x1"
 						componentLink="apps/aa-1x1"
 					/>
+					<LinkCard
+						componentMedia="img"
+						componentMediaHeight="150"
+						componentMediaImage="/icons/1x1.png"
+						componentMediaAlt="Addition Easy"
+						contentTitle="Addition ohne Übertrag"
+						contentText="Wir üben das schriftliche Addieren ohne Übertrag"
+						componentLink="apps/ab-addition_easy"
+					/>
 				</Grid>
 				<Grid item xs={12} />
 			</Grid>
