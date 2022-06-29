@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import { permutations, scrumbleTuples } from '../../common/scrumbler';
-import exportToPdf from './exportToPdf';
+import aa_exportToPdf from './aa_exportToPdf';
 import { Button } from '@mui/material';
 
 export default function Tasks(props) {
@@ -13,7 +13,7 @@ export default function Tasks(props) {
 			<div style={{ textAlign: 'center' }}>
 				<Button
 					variant="contained"
-					onClick={() => exportToPdf(tasks)}
+					onClick={() => aa_exportToPdf(tasks)}
 					style={{ marginBlock: '2em' }}
 				>
 					als pdf exportieren

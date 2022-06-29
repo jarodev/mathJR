@@ -1,6 +1,6 @@
 import { jsPDF } from 'jspdf';
 
-export default function exportToPdf(props) {
+export default function aa_exportToPdf(props) {
 	const doc = jsPDF();
 	doc.setFontSize(24);
 	doc.text(75, 25, '1x1 Übungen');

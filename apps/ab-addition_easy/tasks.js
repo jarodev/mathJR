@@ -1,5 +1,7 @@
 import { getRandomInt } from '../../common/random';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
+import { ab_exportToPdf } from './ab_exportToPdf';
 
 export default function AdditionTasks(props) {
 	const tasks = [];
@@ -18,6 +20,14 @@ export default function AdditionTasks(props) {
 
 	return (
 		<div>
+			<Button
+				variant="contained"
+				onClick={() => ab_exportToPdf(tasks)}
+				style={{ marginBlock: '2em' }}
+			>
+				als pdf exportieren
+			</Button>
+
 			{tasks.map((t) => {
 				return (
 					<Typography key={`${t.summand1}+${t.summand2}`}>
