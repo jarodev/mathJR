@@ -18,7 +18,7 @@ export default function AdditionEasy() {
 	return (
 		<div>
 			<Head>
-				<title>MathJR - Multiplikation ohne Übertrag</title>
+				<title>MathJR - Addition ohne Übertrag</title>
 			</Head>
 			<Container maxWidth="md">
 				<Typography
