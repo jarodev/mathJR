@@ -55,6 +55,19 @@ export default function Mainpage() {
 						componentLink="apps/ad-subtraction_easy"
 					/>
 				</Grid>
+				<Grid item xs={2}></Grid>
+				<Grid item xs={2}></Grid>
+				<Grid item xs={2}>
+					<LinkCard
+						componentMedia="img"
+						componentMediaHeight="150"
+						componentMediaImage="/icons/1x1.png"
+						componentMediaAlt="Subtraction Mid"
+						contentTitle="Subtraktion mit Übertrag"
+						contentText="Wir üben das schriftliche Subtrahieren mit Übertrag"
+						componentLink="apps/ae-subtraction_mid"
+					/>
+				</Grid>
 				<Grid item xs={12} />
 			</Grid>
 			<Stickyfooter />
