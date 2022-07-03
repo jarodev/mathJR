@@ -7,10 +7,10 @@ import {
 	writeStringIntoSquares,
 } from '../../components/export/export_helper';
 
-export function ac_exportToPdf(props) {
+export function ad_exportToPdf(props) {
 	const doc = jsPDF();
 	doc.setFontSize(24);
-	doc.text(55, 25, 'Addieren mit Übertrag');
+	doc.text(55, 25, 'Subtrahieren ohne Übertrag');
 
 	doc.setFontSize(12);
 
@@ -45,15 +45,15 @@ export function ac_exportToPdf(props) {
 				writeStringIntoSquares(
 					doc,
 					START_POS.x,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 5,
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 2 * FIELD_SIZE,
 					8,
 					props[i].summand2.toString()
 				);
 
 				doc.text(
 					START_POS.x + 1,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 3 * FIELD_SIZE - 1,
-					'+'
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 4 * FIELD_SIZE - 1,
+					'-'
 				);
 
 				break;
@@ -76,15 +76,15 @@ export function ac_exportToPdf(props) {
 				writeStringIntoSquares(
 					doc,
 					START_POS.x + COLUMN_WIDTH,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 5,
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 2 * FIELD_SIZE,
 					8,
 					props[i].summand2.toString()
 				);
 
 				doc.text(
 					START_POS.x + COLUMN_WIDTH + 1,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 3 * FIELD_SIZE - 1,
-					'+'
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 4 * FIELD_SIZE - 1,
+					'-'
 				);
 				break;
 
@@ -106,15 +106,15 @@ export function ac_exportToPdf(props) {
 				writeStringIntoSquares(
 					doc,
 					START_POS.x + 2 * COLUMN_WIDTH,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 5,
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 2 * FIELD_SIZE,
 					8,
 					props[i].summand2.toString()
 				);
 
 				doc.text(
 					START_POS.x + 2 * COLUMN_WIDTH + 1,
-					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 3 * FIELD_SIZE - 1,
-					'+'
+					START_POS.y + Math.floor(j / 3) * LINE_HEIGHT + 4 * FIELD_SIZE - 1,
+					'-'
 				);
 				break;
 
