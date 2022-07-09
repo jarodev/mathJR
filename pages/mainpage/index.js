@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Stickyfooter } from '../../components/footer';
 import { Grid } from '@mui/material';
 import { LinkCard } from '../../components/basiccard';
+import MainAppBar from '../../components/mainAppCard';
 
 export default function Mainpage() {
 	return (
 		<>
+			<MainAppBar />
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
 					<h1>Mathe</h1>
