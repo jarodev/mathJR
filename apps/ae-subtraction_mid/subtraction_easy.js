@@ -13,7 +13,7 @@ import SubtractionTasks from './tasks';
 
 export default function SubtractionMid() {
 	const [numberOfTasks, setNumberOfTasks] = React.useState(0);
-	const [maxNumber, setMaxNumber] = React.useState(1000);
+	const [maxnumber, setMaxnumber] = React.useState(1000);
 
 	return (
 		<div>
@@ -42,8 +42,8 @@ export default function SubtractionMid() {
 							labelId="maxNumberLabel"
 							id="maxNumber"
 							label="Zahlenraum"
-							onChange={(e) => setMaxNumber(parseInt(e.target.value))}
-							value={maxNumber}
+							onChange={(e) => setMaxnumber(parseInt(e.target.value))}
+							value={maxnumber}
 						>
 							<MenuItem value={1000}>bis 1.000</MenuItem>
 							<MenuItem value={10000}>bis 10.000</MenuItem>
@@ -79,7 +79,7 @@ export default function SubtractionMid() {
 			</Container>
 
 			<Container maxWidth="md">
-				<SubtractionTasks maxNumber={maxNumber} numberOfTasks={numberOfTasks} />
+				<SubtractionTasks maxNumber={maxnumber} numberOfTasks={numberOfTasks} />
 			</Container>
 		</div>
 	);

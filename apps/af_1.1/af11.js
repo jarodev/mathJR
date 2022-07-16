@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import Tasks from './tasks';
 
-export default function Af_11() {
+export function Af11() {
 	function isTrue(item) {
 		return item.checked;
 	}

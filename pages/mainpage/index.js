@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Stickyfooter } from '../../components/footer';
 import { Grid } from '@mui/material';
 import { LinkCard } from '../../components/basiccard';
-import MainAppBar from '../../components/mainAppCard';
+import MainAppBar from '../../components/MainAppBar';
 
 export default function Mainpage() {
 	return (
