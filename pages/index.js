@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { createTheme, ThemeProvider, useTheme } from '@mui/material';
+import {
+	createTheme,
+	StyledEngineProvider,
+	ThemeProvider,
+	useTheme,
+} from '@mui/material';
 import Mainpage from './mainpage';
 
 const ColorModeContext = React.createContext({
@@ -12,7 +17,9 @@ export default function MathJR() {
 
 	return (
 		<>
-			<Mainpage />
+			<StyledEngineProvider injectFirst>
+				<Mainpage />
+			</StyledEngineProvider>
 		</>
 	);
 }
