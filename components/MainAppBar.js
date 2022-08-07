@@ -4,9 +4,8 @@ import Box from '@mui/material/Box';
 import HomeIcon from '@mui/icons-material/Home';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { UserContext } from './context/UserContext';
 
-export default function MainAppBar() {
+export default function MainAppBar({ currentUser }) {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
@@ -25,9 +24,7 @@ export default function MainAppBar() {
 						MathJR
 					</Typography>
 					<Button color="inherit" style={{ float: 'right' }}>
-						<UserContext.Consumer>
-							{(value) => value.user.userName}
-						</UserContext.Consumer>
+						{currentUser.name}
 					</Button>
 				</Toolbar>
 			</AppBar>

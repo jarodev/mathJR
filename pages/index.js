@@ -9,7 +9,7 @@ import {
 import Mainpage from './mainpage';
 import { supabase } from '../utils/supabaseClient';
 import Account from '../components/Account';
-import Authentication from '../components/authenticaion/Authentication';
+import EmailAuth from '../components/authenticaion/EmailAuth';
 
 const ColorModeContext = React.createContext({
 	toggleColorMode: () => {},
@@ -17,6 +17,8 @@ const ColorModeContext = React.createContext({
 
 export default function Home() {
 	const [session, setSession] = useState(null);
+	const [currentUser, setCurrentUser] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		setSession(supabase.auth.session());
@@ -26,12 +28,42 @@ export default function Home() {
 		});
 	}, []);
 
+	useEffect(() => {
+		getCurrentUser().then(() => setLoading(false));
+	}, [session]);
+
+	async function getCurrentUser() {
+		try {
+			setLoading(true);
+			const user = supabase.auth.user();
+
+			let { data, error, status } = await supabase
+				.from('Users')
+				.select('id, refUser, roles, comment, name, surname, username, isAdmin')
+				.eq('refUser', user.id)
+				.single();
+
+			if (error && status !== 406) {
+				throw error;
+			}
+
+			if (data) {
+				await setCurrentUser(data);
+				setLoading(false);
+			}
+		} catch (error) {
+			alert(error.message);
+		}
+	}
+
 	return (
-		<div className="container" style={{ padding: '50px 0 100px 0' }}>
+		<div className="container">
 			{!session ? (
-				<Authentication />
+				<EmailAuth />
+			) : !loading ? (
+				<Mainpage session={session} currentUser={currentUser} />
 			) : (
-				<Account key={session.user.id} session={session} />
+				<></>
 			)}
 		</div>
 	);
@@ -45,6 +77,7 @@ export function MathJR() {
 		<>
 			<StyledEngineProvider injectFirst>
 				<Mainpage />
+				<Account key={session.user.id} session={session} />
 			</StyledEngineProvider>
 		</>
 	);

@@ -4,16 +4,42 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-import { userIsAdmin } from '../utils/users';
 
 export default function Account({ session }) {
 	const [loading, setLoading] = useState(true);
 	const [roles, setRoles] = useState([]);
 	const [userdata, setUserdata] = useState([]);
+	const [currentUser, setCurrentUser] = useState([]);
 
 	useEffect(() => {
 		getProfile();
+		getCurrentUser();
 	}, [session]);
+
+	async function getCurrentUser() {
+		try {
+			setLoading(true);
+			const user = supabase.auth.user();
+
+			let { data, error, status } = await supabase
+				.from('Users')
+				.select('id, refUser, roles, comment, name, surname, username, isAdmin')
+				.eq('refUser', user.id)
+				.single();
+
+			if (error && status !== 406) {
+				throw error;
+			}
+
+			if (data) {
+				await setCurrentUser(data);
+			}
+		} catch (error) {
+			alert(error.message);
+		} finally {
+			setLoading(false);
+		}
+	}
 
 	async function getProfile() {
 		try {
@@ -113,11 +139,15 @@ export default function Account({ session }) {
 		{ field: 'surname', headerName: 'Nachname' },
 		{ field: 'username', headerName: 'Username' },
 	];
-	console.log(session);
+	// console.log(session);
 	let current = new Date();
+
 	return (
 		<>
 			<Box sx={{ width: '90%', height: '400px' }}>
+				<Typography variant="h2">
+					Hallo {currentUser.name} {currentUser.surname}
+				</Typography>
 				<Typography variant="inherit">
 					Session expires in:{' '}
 					{session.expires_at - Math.round(Date.now() / 1000)} sec
@@ -125,7 +155,7 @@ export default function Account({ session }) {
 				<Typography variant="h2" component="div">
 					Adminbereich
 				</Typography>
-				{userdata && userIsAdmin ? (
+				{userdata && currentUser.isAdmin ? (
 					<DataGrid rows={userdata} columns={columns} />
 				) : (
 					<Typography>no data</Typography>

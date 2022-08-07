@@ -31,3 +31,26 @@ export async function userIsAdmin() {
 		return false;
 	}
 }
+
+export async function getCurrentUser() {
+	try {
+		const user = supabase.auth.user();
+
+		let { data, error, status } = await supabase
+			.from('Users')
+			.select('id, refUser, roles, comment, name, surname, username, isAdmin')
+			.eq('refUser', user.id)
+			.single();
+
+		if (error && status !== 406) {
+			throw error;
+		}
+
+		if (data) {
+			return data;
+		}
+	} catch (error) {
+		alert(error.message);
+	}
+	return null;
+}

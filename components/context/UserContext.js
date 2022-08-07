@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCurrentUser } from '../../utils/users';
 
 const userStatic = {
 	user1: {
@@ -12,6 +13,6 @@ const userStatic = {
 };
 
 export const UserContext = React.createContext({
-	user: userStatic.user1,
+	user: getCurrentUser(),
 	setUser: () => {},
 });
