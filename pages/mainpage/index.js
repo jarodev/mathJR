@@ -4,10 +4,10 @@ import { Grid } from '@mui/material';
 import { LinkCard } from '../../components/basiccard';
 import MainAppBar from '../../components/MainAppBar';
 
-export default function Mainpage({ currentUser }) {
+export default function Mainpage() {
 	return (
 		<>
-			<MainAppBar currentUser={currentUser} />
+			<MainAppBar />
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
 					<h1>Mathe</h1>

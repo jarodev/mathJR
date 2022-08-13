@@ -10,6 +10,7 @@ import Mainpage from './mainpage';
 import { supabase } from '../utils/supabaseClient';
 import Account from '../components/Account';
 import EmailAuth from '../components/authenticaion/EmailAuth';
+import { UserContext } from '../components/context/UserContext';
 
 const ColorModeContext = React.createContext({
 	toggleColorMode: () => {},
@@ -29,7 +30,7 @@ export default function Home() {
 	}, []);
 
 	useEffect(() => {
-		getCurrentUser().then(() => setLoading(false));
+		session ? getCurrentUser().then(() => setLoading(false)) : null;
 	}, [session]);
 
 	async function getCurrentUser() {
@@ -61,7 +62,9 @@ export default function Home() {
 			{!session ? (
 				<EmailAuth />
 			) : !loading ? (
-				<Mainpage session={session} currentUser={currentUser} />
+				<UserContext.Provider value={currentUser}>
+					<Mainpage />
+				</UserContext.Provider>
 			) : (
 				<></>
 			)}
