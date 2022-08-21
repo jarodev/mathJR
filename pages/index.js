@@ -78,7 +78,7 @@ export function MathJR() {
 
 	return (
 		<>
-			<StyledEngineProvider injectFirst>
+			<StyledEngineProvider injectFirst={true}>
 				<Mainpage />
 				<Account key={session.user.id} session={session} />
 			</StyledEngineProvider>
