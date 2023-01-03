@@ -59,15 +59,7 @@ export default function Home() {
 
 	return (
 		<div className="container">
-			{!session ? (
-				<EmailAuth />
-			) : !loading ? (
-				<UserContext.Provider value={currentUser}>
-					<Mainpage />
-				</UserContext.Provider>
-			) : (
-				<></>
-			)}
+			<Mainpage />
 		</div>
 	);
 }
