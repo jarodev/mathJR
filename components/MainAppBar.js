@@ -88,79 +88,77 @@ export default function MainAppBar() {
 		setOpen(true);
 	};
 
-	return (
-		<>
-			<UserContext.Consumer>
-				{(currentUser) => (
-					<Box sx={{ flexGrow: 1 }}>
-						<AppBar position="static">
-							<Toolbar>
-								<IconButton
-									size="medium"
-									edge="start"
-									aria-label="Home"
-									sx={{ mr: 2 }}
-								>
-									<Link href="/mainpage">
-										<HomeIcon />
-									</Link>
-								</IconButton>
-								<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-									MathJR
-								</Typography>
+	return <>
+        <UserContext.Consumer>
+            {(currentUser) => (
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <IconButton
+                                size="medium"
+                                edge="start"
+                                aria-label="Home"
+                                sx={{ mr: 2 }}
+                            >
+                                <Link href="/mainpage" legacyBehavior>
+                                    <HomeIcon />
+                                </Link>
+                            </IconButton>
+                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                                MathJR
+                            </Typography>
 
-								<IconButton
-									size="large"
-									area-label="account of the current user"
-									area-controls="menu-appbar"
-									area-haspopup="true"
-									onClick={handleMenu}
-									color="inherit"
-									edge="end"
-								>
-									<AccountCircle />
-								</IconButton>
-								<Menu
-									id="menu-appbar"
-									anchorEl={anchorEl}
-									anchorOrigin={{
-										vertical: 'top',
-										horizontal: 'right',
-									}}
-									keepmounted="true"
-									transformOrigin={{
-										vertical: 'top',
-										horizontal: 'right',
-									}}
-									open={Boolean(anchorEl)}
-									onClose={handleClose}
-								>
-									<MenuItem onClick={openDialog}>Profil löschen</MenuItem>
-									<MenuItem onClick={handleLogout}>Log-out</MenuItem>
-								</Menu>
-							</Toolbar>
-							<Dialog
-								open={open}
-								keepMounted
-								onClose={() => setOpen(false)}
-								aria-describedby="alert-dialog-slide-description"
-							>
-								<DialogTitle>Profil löschen?</DialogTitle>
-								<DialogContent>
-									<DialogContentText id="alert-dialog-slide-description">
-										Soll das aktuelle Profil komplett gelöscht werden? Der
-										Vorgang kann nicht wieder rückgängig gemacht werden.
-									</DialogContentText>
-								</DialogContent>
-								<DialogActions>
-									<Button onClick={() => setOpen(false)}>NEIN</Button>
-									<Button onClick={handleProfile}>JA, Profil löschen</Button>
-								</DialogActions>
-							</Dialog>
-						</AppBar>
-					</Box>
-				)}
-			</UserContext.Consumer>
-		</>
-	);
+                            <IconButton
+                                size="large"
+                                area-label="account of the current user"
+                                area-controls="menu-appbar"
+                                area-haspopup="true"
+                                onClick={handleMenu}
+                                color="inherit"
+                                edge="end"
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepmounted="true"
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={openDialog}>Profil löschen</MenuItem>
+                                <MenuItem onClick={handleLogout}>Log-out</MenuItem>
+                            </Menu>
+                        </Toolbar>
+                        <Dialog
+                            open={open}
+                            keepMounted
+                            onClose={() => setOpen(false)}
+                            aria-describedby="alert-dialog-slide-description"
+                        >
+                            <DialogTitle>Profil löschen?</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-slide-description">
+                                    Soll das aktuelle Profil komplett gelöscht werden? Der
+                                    Vorgang kann nicht wieder rückgängig gemacht werden.
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={() => setOpen(false)}>NEIN</Button>
+                                <Button onClick={handleProfile}>JA, Profil löschen</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </AppBar>
+                </Box>
+            )}
+        </UserContext.Consumer>
+    </>;
 }

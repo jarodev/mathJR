@@ -17,19 +17,19 @@ export const NextLinkComposed = React.forwardRef(function NextLinkComposed(
 		props;
 
 	return (
-		<NextLink
-			href={to}
-			prefetch={prefetch}
-			as={linkAs}
-			replace={replace}
-			scroll={scroll}
-			shallow={shallow}
-			passHref
-			locale={locale}
-		>
+        <NextLink
+            href={to}
+            prefetch={prefetch}
+            as={linkAs}
+            replace={replace}
+            scroll={scroll}
+            shallow={shallow}
+            passHref
+            locale={locale}
+            legacyBehavior>
 			<Anchor ref={ref} {...other} />
 		</NextLink>
-	);
+    );
 });
 
 NextLinkComposed.propTypes = {
