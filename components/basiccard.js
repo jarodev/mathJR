@@ -10,8 +10,8 @@ import Link from 'next/link';
 
 export function LinkCard(props) {
 	return (
-		<Card sx={{ maxWidth: 300 }}>
-			<Link href={props.componentLink}>
+        <Card sx={{ maxWidth: 300 }}>
+			<Link href={props.componentLink} legacyBehavior>
 				<CardActionArea>
 					<CardMedia
 						component={props.componentMedia}
@@ -34,5 +34,5 @@ export function LinkCard(props) {
 				</CardActionArea>
 			</Link>
 		</Card>
-	);
+    );
 }
