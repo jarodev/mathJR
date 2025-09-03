@@ -20,8 +20,11 @@
     "@promitheus/ra-data-postgrest": "^1.2.2",
     "@supabase/supabase-js": "^1.35.6",
     "axios": "^0.27.2",
-    "jspdf": "^2.5.1",
+
     "next": "^14.2.32",
+
+    "jspdf": "^3.0.2",
+
     "next-axiom": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
