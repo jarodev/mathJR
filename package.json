@@ -19,7 +19,7 @@
     "@mui/x-data-grid": "^5.15.1",
     "@promitheus/ra-data-postgrest": "^1.2.2",
     "@supabase/supabase-js": "^1.35.6",
-    "axios": "^0.30.0",
+    "axios": "^0.30.2",
 
     "next": "^14.2.32",
 
